@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  requestservice:
+    image: ${DOCKER_REGISTRY-}requestservice:0.1
+    build:
+      context: .
+      dockerfile: Services/Request/Dockerfile
