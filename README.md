@@ -12,5 +12,8 @@ dotnet user-secrets -p Services/Request/RequestService.csproj set "Kestrel:Certi
 instalar kubectl y minikube
 
 kubectl apply -f k8s/request-service-deployment.yaml
+kubectl apply -f k8s/request-np-srv.yaml
 
 kubectl delete deployments request-service-deployment
+
+minikube image ls

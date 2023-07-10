@@ -15,6 +15,6 @@ spec:
       containers:
         - name: requestservice
           image: requestservice:0.1
-          imagePullPolicy: Never
+          imagePullPolicy: Never # descarga la imagen que está en LOCAL, no lo descarga del DockerHub
           ports:
           - containerPort: 8000
