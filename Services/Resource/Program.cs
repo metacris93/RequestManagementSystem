@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using ResourceService;
+using ResourceService.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemory"));
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.RegisterMapsterConfiguration();
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -21,5 +27,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+MemoryDb.MemoryPopulation(app);
 
 app.Run();

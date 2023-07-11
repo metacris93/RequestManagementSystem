@@ -17,3 +17,10 @@ kubectl apply -f k8s/request-np-srv.yaml
 kubectl delete deployments request-service-deployment
 
 minikube image ls
+
+kubectl config current-context
+kubectl config use-context docker-desktop
+
+kubectl get namespace
+kubectl get pods --namespace=ingress-nginx
+kubectl get services --namespace=ingress-nginx

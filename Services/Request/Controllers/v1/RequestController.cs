@@ -9,12 +9,12 @@ namespace RequestService.Controllers.v1;
 
 [Route("api/v1/[controller]")]
 [ApiController]
-public class RequestsController : ControllerBase
+public class RequestController : ControllerBase
 {
     private readonly IRequestRepository _repository;
     private readonly IMapper _mapper;
 
-    public RequestsController(IRequestRepository repository, IMapper mapper)
+    public RequestController(IRequestRepository repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;

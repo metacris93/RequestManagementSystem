@@ -5,11 +5,11 @@ namespace RequestService.Data;
 
 public class RequestRepository : IRequestRepository
 {
-  private readonly AppDbContext _context;
-  public RequestRepository(AppDbContext context)
-  {
-    _context = context;
-  }
+    private readonly AppDbContext _context;
+    public RequestRepository(AppDbContext context)
+    {
+        _context = context;
+    }
 
     public IEnumerable<Request> GetAllRequests()
     {
