@@ -12,8 +12,6 @@ public class SqlServerContextSeed
         {
             Seed(serviceScope.ServiceProvider.GetService<SqlServerContext>());
         }
-        
-
     }
     private static void Seed(SqlServerContext dbContext)
 	{

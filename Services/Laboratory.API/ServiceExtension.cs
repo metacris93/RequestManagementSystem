@@ -1,8 +1,6 @@
 ﻿using System;
-using Request.API.Data;
+using Laboratory.API.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Services.Common.Swagger;
@@ -11,17 +9,17 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System.Reflection;
 using Mapster;
 using MapsterMapper;
-using Request.API.Repositories;
-using Request.API.Entities;
-using Request.API.Dtos;
+using Laboratory.API.Repositories;
+using Laboratory.API.Entities;
+using Laboratory.API.Dtos;
 
-namespace Request.API;
+namespace Laboratory.API;
 
 public static class ServiceExtension
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddScoped<IEstadoRepository, EstadoRepository>();
+        services.AddScoped<ILaboratorioRepository, LaboratorioRepository>();
         return services;
     }
 	public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
@@ -49,7 +47,7 @@ public static class ServiceExtension
         services.AddSingleton(config);
         services.AddScoped<IMapper, ServiceMapper>();
 
-        config.NewConfig<Estado, EstadoReadDto>()
+        config.NewConfig<Laboratorio, LaboratorioReadDto>()
             .TwoWays();
 
         config.Scan(Assembly.GetExecutingAssembly());

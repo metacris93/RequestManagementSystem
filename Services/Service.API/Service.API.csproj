@@ -10,6 +10,20 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.20" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +35,18 @@
     <None Remove="Controllers\v1\" />
     <None Remove="Entities\" />
     <None Remove="Repositories\" />
+    <None Remove="Dtos\" />
+    <None Remove="Data\" />
+    <None Remove="Data\Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\v1\" />
     <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\Configuration\" />
+    <Folder Include="Controllers\v1\" />
   </ItemGroup>
 </Project>

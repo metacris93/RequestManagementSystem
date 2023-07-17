@@ -1,10 +1,10 @@
 ﻿using Request.API;
 using Request.API.Data;
+using Services.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddDatabase(builder.Configuration, builder.Environment);
 builder.Services.RegisterMapsterConfiguration();
 builder.Services.AddControllers();
