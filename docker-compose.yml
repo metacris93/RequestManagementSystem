@@ -1,8 +1,30 @@
 version: '3.4'
 
 services:
-  requestservice:
-    image: ${DOCKER_REGISTRY-}requestservice:0.1
+  request.api:
+    image: ${DOCKER_REGISTRY-}request
     build:
       context: .
-      dockerfile: Services/Request/Dockerfile
+      dockerfile: Services/Request.API/Dockerfile
+
+
+  user.api:
+    image: ${DOCKER_REGISTRY-}user
+    build:
+      context: .
+      dockerfile: Services/User.API/Dockerfile
+
+
+  service.api:
+    image: ${DOCKER_REGISTRY-}service
+    build:
+      context: .
+      dockerfile: Services/Service.API/Dockerfile
+
+
+  laboratory.api:
+    image: ${DOCKER_REGISTRY-}laboratory
+    build:
+      context: .
+      dockerfile: Services/Laboratory.API/Dockerfile
+
