@@ -14,6 +14,9 @@ builder.Services.AddSwaggerConfiguration();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
+var section = builder.Configuration.GetSection("ApiSettings");
+builder.Services.AddJwtBearerAuthentication(section);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,7 +28,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

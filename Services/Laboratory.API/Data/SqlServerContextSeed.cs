@@ -31,6 +31,7 @@ public class SqlServerContextSeed
                 Nombre = "Laboratorio 1",
                 Descripcion = "Laboratorio Descripcion 1",
                 CreatedAt = DateTime.Now,
+                Imagen = "https://picsum.photos/id/237/200/300"
             }
         };
     }

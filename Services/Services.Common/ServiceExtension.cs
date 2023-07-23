@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Services.Common.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -79,4 +82,28 @@ public static class ServiceExtension
         });
         return services;
     }
+    //public static IServiceCollection AddJwtBearerAuthentication(this IServiceCollection services, IConfigurationSection section)
+    //{
+    //    var secret = section.GetValue<string>("Secret");
+    //    var issuer = section.GetValue<string>("Issuer");
+    //    var audience = section.GetValue<string>("Audience");
+    //    var key = Encoding.ASCII.GetBytes(secret);
+    //    services.AddAuthentication(x =>
+    //    {
+    //        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    //        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    //    }).AddJwtBearer(x =>
+    //    {
+    //        x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    //        {
+    //            ValidateIssuerSigningKey = true,
+    //            IssuerSigningKey = new SymmetricSecurityKey(key),
+    //            ValidateIssuer = true,
+    //            ValidIssuer = issuer,
+    //            ValidAudience = audience,
+    //            ValidateAudience = true,
+    //        };
+    //    });
+    //    return services;
+    //}
 }

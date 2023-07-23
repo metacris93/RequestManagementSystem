@@ -28,3 +28,8 @@ services:
       context: .
       dockerfile: Services/Laboratory.API/Dockerfile
 
+  requestmanagementapigateway:
+    image: ${DOCKER_REGISTRY-}requestmanagementapigateway
+    build:
+      context: .
+      dockerfile: ApiGateways/RequestManagementAPIGateway/Dockerfile

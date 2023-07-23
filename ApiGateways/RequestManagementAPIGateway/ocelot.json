@@ -1,31 +1,36 @@
 ﻿{
+  "ApiSettings": {
+    "Secret": "no se que contrasenia poner",
+    "Issuer": "request-management-auth-api",
+    "Audience": "request-client"
+  },
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/v1/request",
+      "DownstreamPathTemplate": "/api/v1/solicitud",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7275
+          "Port": 5001
         }
       ],
-      "UpstreamPathTemplate": "/apigateway/v1/request",
+      "UpstreamPathTemplate": "/apigateway/v1/solicitud",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/department",
+      "DownstreamPathTemplate": "/api/v1/departmento",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7295
+          "Port": 5002
         }
       ],
-      "UpstreamPathTemplate": "/apigateway/v1/department",
+      "UpstreamPathTemplate": "/apigateway/v1/departmento",
       "UpstreamHttpMethod": [ "GET" ]
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7176"
+    "BaseUrl": "https://localhost:5004"
   }
 }
