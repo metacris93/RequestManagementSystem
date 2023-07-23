@@ -28,7 +28,7 @@ public static class ServiceExtension
 	{
         if (env.IsProduction())
         {
-            services.AddDbContext<SqlServerContext>(options =>
+            services.AddDbContextPool<SqlServerContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("Connection"));
             });
@@ -38,6 +38,7 @@ public static class ServiceExtension
             services.AddDbContext<SqlServerContext>(options =>
             {
                 options.UseInMemoryDatabase("InMem");
+                //options.UseSqlite("Data Source=.\\Database\\requests.db");
             });
         }
         

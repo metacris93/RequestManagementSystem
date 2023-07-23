@@ -24,3 +24,13 @@ kubectl config use-context docker-desktop
 kubectl get namespace
 kubectl get pods --namespace=ingress-nginx
 kubectl get services --namespace=ingress-nginx
+
+LOS COMANDOS DE MIGRACIONES EJECUTARLO COMO ADMINISTRADOR
+add-migration addIdentityTables
+
+dotnet ef --startup-project ./Services/User.API/User.API.csproj migrations add InitialMigration --project ./Services/User.API/User.API.csproj --context SqlServerContext --verbose
+dotnet ef --startup-project ./Services/Laboratory.API/Laboratory.API.csproj migrations add InitialMigration --project ./Services/Laboratory.API/Laboratory.API.csproj --context SqlServerContext --verbose
+dotnet ef --startup-project ./Services/Request.API/Request.API.csproj migrations add InitialMigration --project ./Services/Request.API/Request.API.csproj --context SqlServerContext --verbose
+dotnet ef --startup-project ./Services/Service.API/Service.API.csproj migrations add InitialMigration --project ./Services/Service.API/Service.API.csproj --context SqlServerContext --verbose
+
+dotnet ef database update --startup-project ./Services/User.API/User.API.csproj --project ./Services/User.API/User.API.csproj --context SqlServerContext --verbose

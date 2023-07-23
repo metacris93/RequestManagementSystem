@@ -1,29 +1,26 @@
 ﻿using System;
-using Laboratory.API.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Services.Common.Swagger;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using System.Reflection;
 using Mapster;
 using MapsterMapper;
-using Laboratory.API.Repositories;
-using Laboratory.API.Entities;
-using Laboratory.API.Dtos;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using User.API.Data;
+using User.API.Entities;
+using User.API.Dtos;
+using User.API.Service.IService;
+using User.API.Service;
 
-namespace Laboratory.API;
+namespace User.API;
 
 public static class ServiceExtension
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddScoped<ILaboratorioRepository, LaboratorioRepository>();
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         return services;
     }
-	public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
-	{
+    public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
+    {
         if (env.IsProduction())
         {
             services.AddDbContextPool<SqlServerContext>(options =>
@@ -35,19 +32,19 @@ public static class ServiceExtension
         {
             services.AddDbContext<SqlServerContext>(options =>
             {
-                options.UseSqlite("Data Source=.\\Database\\laboratories.db");
+                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             });
         }
-        
-		return services;
-	}
+
+        return services;
+    }
     public static void RegisterMapsterConfiguration(this IServiceCollection services)
     {
         var config = TypeAdapterConfig.GlobalSettings;
         services.AddSingleton(config);
         services.AddScoped<IMapper, ServiceMapper>();
 
-        config.NewConfig<Laboratorio, LaboratorioReadDto>()
+        config.NewConfig<Usuario, UserDto>()
             .TwoWays();
 
         config.Scan(Assembly.GetExecutingAssembly());

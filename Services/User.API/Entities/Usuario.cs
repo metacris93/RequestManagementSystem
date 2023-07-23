@@ -1,17 +1,17 @@
-﻿using System;
-using Services.Common;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace User.API.Entities;
 
-public class Usuario : BaseEntity
+public class Usuario : IdentityUser
 {
-	public string Nombres { get; set; }
-	public string Apellidos { get; set; }
-	public DateTime FechaNacimiento { get; set; }
-	public string Genero { get; set; }
-	public string Identificacion { get; set; }
-	public long RolId { get; set; }
-	public string Correo { get; set; }
-	public string Password { get; set; }
+	public string Name { get; set; }
+	public string LastName { get; set; }
+	public DateTime? BirthDate { get; set; }
+	public string Gender { get; set; }
+	public string Identification { get; set; }
+	public string Email { get; set; }
+	public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime? UpdatedAt { get; set; }
+    public DateTime? DeletedAt { get; set; }
 }
 
